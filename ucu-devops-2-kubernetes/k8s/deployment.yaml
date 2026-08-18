@@ -1,0 +1,128 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notes-0
+  template:
+    metadata:
+      labels:
+        app: notes-0
+    spec:
+      volumes:
+      - name: notes-storage
+        hostPath:
+          path: /mnt/notes
+          type: DirectoryOrCreate
+      containers:
+      - name: notes
+        image: my-app-image:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+        env:
+        - name: POD_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: deployment_0
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: notes-storage
+          mountPath: /data
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notes-1
+  template:
+    metadata:
+      labels:
+        app: notes-1
+    spec:
+      volumes:
+      - name: notes-storage
+        hostPath:
+          path: /mnt/notes
+          type: DirectoryOrCreate
+      containers:
+      - name: notes
+        image: my-app-image:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+        env:
+        - name: POD_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: deployment_1
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: notes-storage
+          mountPath: /data
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notes-2
+  template:
+    metadata:
+      labels:
+        app: notes-2
+    spec:
+      volumes:
+      - name: notes-storage
+        hostPath:
+          path: /mnt/notes
+          type: DirectoryOrCreate
+      containers:
+      - name: notes
+        image: my-app-image:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+        env:
+        - name: POD_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: deployment_2
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: notes-storage
+          mountPath: /data

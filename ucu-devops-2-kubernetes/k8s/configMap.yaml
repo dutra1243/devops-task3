@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  deployment_0: "Notas master"
+  deployment_1: "Notas larper"
+  deployment_2: "Notas bleh"
