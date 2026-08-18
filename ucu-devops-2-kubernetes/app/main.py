@@ -39,7 +39,7 @@ notes = load_notes()
 
 @app.get("/")
 def root():
-    return {"message": "El API está activo"}
+    return {"message": "El API está activo, que facha loco!!!"}
 
 
 @app.get("/add/{note:path}")

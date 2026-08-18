@@ -19,7 +19,7 @@ spec:
           type: DirectoryOrCreate
       containers:
       - name: notes
-        image: my-app-image:latest
+        image: my-app-image:2.0
         imagePullPolicy: IfNotPresent
         resources:
           requests:
@@ -63,7 +63,7 @@ spec:
           type: DirectoryOrCreate
       containers:
       - name: notes
-        image: my-app-image:latest
+        image: my-app-image:2.0
         imagePullPolicy: IfNotPresent
         resources:
           requests:
@@ -106,7 +106,7 @@ spec:
           type: DirectoryOrCreate
       containers:
       - name: notes
-        image: my-app-image:latest
+        image: my-app-image:2.0
         imagePullPolicy: IfNotPresent
         resources:
           requests:
